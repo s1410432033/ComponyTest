@@ -34,7 +34,7 @@ class MainAdpater(main: MainActivity) : RecyclerView.Adapter<MainAdpater.ViewHol
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.itemImage.setOnClickListener {
+        holder.itemView.dataText.setOnClickListener {
             main.goNext(position)
         }
         val posData = mData.get(position)
