@@ -2,6 +2,7 @@ package com.example.test.main
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,12 @@ class MainActivity : AppCompatActivity(){
         getData()
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (!TimeObject.firstStart){
+            Toast.makeText(this,"歡迎回來",Toast.LENGTH_SHORT).show()
+        }
+    }
     fun getData(){
         retrofit.getT(auth = "CWB-FAEB75E0-791E-4533-815E-88294C2747FE",
             location = "臺北市",
@@ -54,4 +61,8 @@ class MainActivity : AppCompatActivity(){
         ).commit()
     }
 
+    override fun onStop() {
+        super.onStop()
+        TimeObject.firstStart = false
+    }
 }

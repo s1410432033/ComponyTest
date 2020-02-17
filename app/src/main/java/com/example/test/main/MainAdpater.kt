@@ -17,10 +17,8 @@ class MainAdpater(main: MainActivity) : RecyclerView.Adapter<MainAdpater.ViewHol
     val mData = TimeObject.time!!
     lateinit var mTextView: TextView
     lateinit var mImage: ImageView
-
     lateinit var itemView:View
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         itemView =  LayoutInflater.from(parent.context).inflate(R.layout.main_itemview,parent,false)
@@ -38,12 +36,9 @@ class MainAdpater(main: MainActivity) : RecyclerView.Adapter<MainAdpater.ViewHol
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.itemImage.setOnClickListener {
             main.goNext(position)
-
         }
         val posData = mData.get(position)
         mTextView.text = "${posData.startTime}\n${posData.endTime}\n${posData.parameter?.parameterName}${posData.parameter?.parameterUnit}"
     }
-
-
 }
 
